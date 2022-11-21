@@ -108,11 +108,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       height: FetchPixels.getPixelHeight(50),
                       width: FetchPixels.getPixelHeight(50),
                       decoration: BoxDecoration(
-                          color: const Color(0xFFE4ECFF),
+                          color: const Color(0xff235A45).withOpacity(0.7),
                           borderRadius: BorderRadius.circular(
                               FetchPixels.getPixelHeight(12))),
                       padding: EdgeInsets.all(FetchPixels.getPixelHeight(13)),
-                      child: getSvgImage("clock.svg"),
+                      child: getSvgImage("clock.svg", color: Colors.white),
                     ),
                     getHorSpace(FetchPixels.getPixelWidth(14)),
                     Expanded(

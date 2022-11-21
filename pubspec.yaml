@@ -44,7 +44,15 @@ dependencies:
   flutter_advanced_drawer: ^1.3.2
   equatable: ^2.0.3
   youtube_player_flutter: ^8.1.1
+<<<<<<< Updated upstream
   carousel_slider: ^4.1.1
+=======
+<<<<<<< HEAD
+  webview_flutter: ^3.0.4
+=======
+  carousel_slider: ^4.1.1
+>>>>>>> 68a90e0677d912d25bc77f08a942e7b997dfd63a
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:

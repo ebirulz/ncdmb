@@ -16,7 +16,7 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
       children: [
         buildEventListItem(
           context,
-          img: 'barber.png',
+          img: 'event1.png',
           function: proceed,
           date: '12-Nov-2022',
           desc: 'Testing Description Testing Description Testing Description',

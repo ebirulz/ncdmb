@@ -74,7 +74,7 @@ class _StaffServicesCategoryScreenState extends State<StaffServicesCategoryScree
           StaffServicesModel staffServiceCategory = staffServicesLists[index];
           return GestureDetector(
             onTap: () {
-              //Constant.sendToNext(context, Routes.detailRoute);
+              Navigator.pushNamed(context, staffServiceCategory.route);
             },
             child: Container(
               padding: EdgeInsets.only(

@@ -92,13 +92,7 @@ class _BreakingNews extends StatelessWidget {
                               .copyWith(
                               fontWeight: FontWeight.bold, height: 1.5),
                         ),
-                        const SizedBox(height: 5),
-                        Text(
-                            '${DateTime.now().difference(articles[index].createdAt).inHours} hours ago',
-                            style: Theme.of(context).textTheme.bodySmall),
-                        const SizedBox(height: 5),
-                        Text('by ${articles[index].author}',
-                            style: Theme.of(context).textTheme.bodySmall),
+
                       ],
                     ),
                   ),

@@ -18,7 +18,7 @@ class _PastEventsState extends State<PastEvents> {
           eventName: 'NCDMB Stakeholders Summit 2022',
           desc: 'The Summit with the theme “Towards maximizing potentials in the Mid and downstream Oil and Gas sector',
           date: '15th - 16th March 2022',
-          img: 'barber.png',
+          img: 'event1.png',
           function: print,
         )
       ],

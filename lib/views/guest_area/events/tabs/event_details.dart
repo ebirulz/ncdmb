@@ -20,19 +20,14 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
     FetchPixels(context);
     double defSpace = FetchPixels.getDefaultHorSpace(context);
     EdgeInsets edgeInsets = EdgeInsets.symmetric(horizontal: defSpace);
-    return WillPopScope(
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: backGroundColor,
-          body: SafeArea(
-            child: buildPage(edgeInsets, context, defSpace),
-          ),
-        ),
-        onWillPop: () async {
-          Constant.backToPrev(context);
-          return false;
-        });
-  }
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: backGroundColor,
+      body: SafeArea(
+        child: buildPage(edgeInsets, context, defSpace),
+      ),
+    );
+}
 
   ListView buildPage(EdgeInsets edgeInsets, BuildContext context,
       double defSpace) {
@@ -59,35 +54,66 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         getVerSpace(FetchPixels.getPixelHeight(20)),
         getPaddingWidget(edgeInsets, eventDescription(context)),
         getVerSpace(FetchPixels.getPixelHeight(29)),
-        Container(
-          padding: EdgeInsets.only(
-              top: FetchPixels.getPixelHeight(16),
-              bottom: FetchPixels.getPixelHeight(16),
-              left: FetchPixels.getPixelWidth(16),
-              right: FetchPixels.getPixelWidth(16)),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    offset: Offset(0.0, 4.0)),
-              ],
-              borderRadius:
-              BorderRadius.circular(FetchPixels.getPixelHeight(12))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              getVerSpace(FetchPixels.getPixelHeight(20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+        Padding(
+            padding: EdgeInsets.only(left: 20),
+          child: getCustomFont("Guest Speakers", 24, defaultGreen, 2,
+              fontWeight: FontWeight.w900),
+        ),
+        getVerSpace(FetchPixels.getPixelHeight(19)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            width: double.infinity,
+            height: 70,
+            decoration: BoxDecoration(
+                color: const Color(0xff235A45).withOpacity(0.1),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: const BoxDecoration(
+                        color: Color(0xFFFFF4EE),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(17),
+                          topRight: Radius.circular(17),
+                          bottomRight: Radius.circular(17),
+                          bottomLeft: Radius.circular(7),
+                        )),
+                    child: const Image(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/images/es.png"),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const <Widget>[
+                      Text(
+                        "Engr. Simbi Wabote",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "Topic: Key roles of NCDMB",
+                        style: TextStyle(fontSize: 12),
+                      ),
 
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
-        )
+        ),
         // packageList(context)
       ],
     );
@@ -111,7 +137,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         tag: 'event image',
         child: getCircularImage(context, FetchPixels.getPixelWidth(374),
             FetchPixels.getPixelHeight(225), FetchPixels.getPixelHeight(16),
-            'barber.png',boxFit: BoxFit.cover));
+            'event2.png',boxFit: BoxFit.cover));
     // getAssetImage(popularServiceLists[index].image ?? "",
     // FetchPixels.getPixelWidth(374), FetchPixels.getPixelHeight(225),
     // boxFit: BoxFit.fill),);
