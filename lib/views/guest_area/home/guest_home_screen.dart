@@ -31,11 +31,19 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   }
 
   List<Slides> slides = [
-    Slides('Slide 1', 'assets/images/slide1.png'),
-    Slides('Slide 2', 'assets/images/slide2.png'),
-    Slides('Slide 2', 'assets/images/slide3.png'),
+    Slides('Slide 1', s1, 'assets/images/slide1.png'),
+    Slides('Slide 2', s2, 'assets/images/slide2.png'),
+    Slides('Slide 3', s3, 'assets/images/slide3.png'),
   ];
   int _current = 0;
+  String slideText = '';
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
@@ -194,14 +202,19 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 ),
                 CarouselSlider(
                   items: slides
-                      .map((e) => Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      e.url,
-                                    ),
-                                    fit: BoxFit.cover)),
-                          ))
+                      .map((e) => Column(
+                        children: [
+                          Container(
+                            height: 200,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                          e.url,
+                                        ),
+                                        fit: BoxFit.cover)),
+                              ),
+                        ],
+                      ))
                       .toList(),
                   options: CarouselOptions(
                       viewportFraction: 1,
@@ -210,9 +223,13 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                       onPageChanged: (index, reason) {
                         setState(() {
                           _current = index;
+                          slideText = slides[index].description;
                         });
                       }),
                 ),
+                const Divider(),
+                Text(slideText),
+                const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: map<Widget>(slides, (index, url) {
@@ -341,6 +358,14 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
 
 class Slides {
   String title;
+  String description;
   String url;
-  Slides(this.title, this.url);
+  Slides(this.title, this.description, this.url);
 }
+
+const s1 =
+    "We promise that your money will be completely protected. We work together with Flutterwave to make sure that we abide by all legal and regulatory standards.";
+const s2 =
+    "Do not become alarmed if your PennyTree account has been temporarily disabled. We have detected an odd behavior on your account, which is what this indicates. For the following twelve (12) hours, you wouldn't be able to access your account. Contact us by sending an email to support@mypennytree.com";
+const s3 =
+    "To contact PennyTree, please call 09030266439 or email support@mypennytree.com. You can also reach out to us on any of our social media accounts.\nWe also run on intercom to provide immediate response to your questions and feedback. Please chat with us directly from your dashboard by clicking on the chat icon on your screen. ";
