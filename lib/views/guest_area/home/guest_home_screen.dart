@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ncdmb/utils/color_data.dart';
@@ -15,7 +16,6 @@ import '../../../widgets/svg_image.dart';
 import '../others/nogaps_screen.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 
-
 class GuestHomeScreen extends StatefulWidget {
   const GuestHomeScreen({Key? key}) : super(key: key);
 
@@ -24,13 +24,18 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
-
   final _advancedDrawerController = AdvancedDrawerController();
 
   void backClick() {
     Constant.backToPrev(context);
   }
 
+  List<Slides> slides = [
+    Slides('Slide 1', 'assets/images/slide1.png'),
+    Slides('Slide 2', 'assets/images/slide2.png'),
+    Slides('Slide 2', 'assets/images/slide3.png'),
+  ];
+  int _current = 0;
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
@@ -86,9 +91,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 ),
                 ListTile(
                   visualDensity: const VisualDensity(vertical: -4),
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                   leading: const Icon(Iconsax.video_vertical),
                   title: const Text('Media'),
                 ),
@@ -143,7 +146,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               children: [
                 getVerSpace(FetchPixels.getPixelHeight(50)),
                 getPaddingWidget(
-                  EdgeInsets.symmetric(horizontal: FetchPixels.getPixelWidth(20)),
+                  EdgeInsets.symmetric(
+                      horizontal: FetchPixels.getPixelWidth(20)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -153,17 +157,21 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                           "menu.svg",
                         ),
                       ),
-
                       Row(
                         children: [
-                          getAssetImage("appbar_logo.png", FetchPixels.getPixelHeight(230),  FetchPixels.getPixelWidth(80)),
+                          getAssetImage(
+                              "appbar_logo.png",
+                              FetchPixels.getPixelHeight(230),
+                              FetchPixels.getPixelWidth(80)),
                         ],
                       ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => const NotificationScreen())
-                          );
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NotificationScreen()));
                         },
                         child: getSvgImage(
                           "notification.svg",
@@ -181,6 +189,63 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                   ),
                 ),
                 const Categories(),
+                const Divider(
+                  color: Colors.transparent,
+                ),
+                CarouselSlider(
+                  items: slides
+                      .map((e) => Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      e.url,
+                                    ),
+                                    fit: BoxFit.cover)),
+                          ))
+                      .toList(),
+                  options: CarouselOptions(
+                      viewportFraction: 1,
+                      height: 200,
+                      autoPlay: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: map<Widget>(slides, (index, url) {
+                    return Column(
+                      children: [
+                        Container(
+                          width: _current == index ? 40 : 20,
+                          height: 10,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 2),
+                          decoration: BoxDecoration(
+                              borderRadius: _current == index
+                                  ? const BorderRadius.all(Radius.circular(30))
+                                  : null,
+                              shape: _current == index
+                                  ? BoxShape.rectangle
+                                  : BoxShape.circle,
+                              color: _current == index
+                                  ? Colors.green
+                                  : Colors.brown.withOpacity(.5)),
+                        ),
+                        const VerticalDivider(
+                          width: 20,
+                        )
+                      ],
+                    );
+                  }),
+                ),
+                // Container(
+                //   height: 100,
+                //   width: double.infinity,
+                //   color: Colors.red,
+                // ),
                 getVerSpace(FetchPixels.getPixelHeight(20)),
                 Container(
                     padding: const EdgeInsets.all(10),
@@ -194,76 +259,88 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: (){
+                            onTap: () {
                               Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => const StrategicRoadMap())
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const StrategicRoadMap()));
                             },
-                            child: getAssetImage("roadmap.png", FetchPixels.getPixelHeight(200),  FetchPixels.getPixelWidth(150)),
+                            child: getAssetImage(
+                                "roadmap.png",
+                                FetchPixels.getPixelHeight(200),
+                                FetchPixels.getPixelWidth(150)),
                             //child: Image.asset('assets/images/roadmap.png'),
                           ),
                           InkWell(
-                            onTap: (){
+                            onTap: () {
                               Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => const NOGAPSSCREEN())
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const NOGAPSSCREEN()));
                             },
-                            child: getAssetImage("nogaps.png", FetchPixels.getPixelHeight(180),  FetchPixels.getPixelWidth(200)),
+                            child: getAssetImage(
+                                "nogaps.png",
+                                FetchPixels.getPixelHeight(180),
+                                FetchPixels.getPixelWidth(200)),
                             //child: Image.asset('assets/images/nogaps.png'),
                           ),
                         ],
                       ),
-                    )
-                ),
+                    )),
                 executiveSec(context),
                 getVerSpace(FetchPixels.getPixelHeight(20)),
                 EventList(),
                 getVerSpace(FetchPixels.getPixelHeight(20)),
-                serviceListWidget(
-                    context,
+                serviceListWidget(context,
                     link: '/event_management',
                     img: 'assets/services/calendar.png',
                     name: 'EVENTS MANAGEMENT SYSTEM',
-                  icon: Iconsax.calendar_tick
-                ),
-                serviceListWidget(
-                    context,
+                    icon: Iconsax.calendar_tick),
+                serviceListWidget(context,
                     link: '/event_management',
                     img: 'assets/services/boat.png',
                     name: 'MARINE VESSEL REPORT',
-                    icon: Iconsax.security_time
-                ),
-                serviceListWidget(
-                    context,
+                    icon: Iconsax.security_time),
+                serviceListWidget(context,
                     link: '/event_management',
                     img: 'assets/services/payment-method.png',
                     name: 'NCDF PAYMENT PORTAL',
-                    icon: Iconsax.card_pos
-                ),
-                serviceListWidget(
-                    context,
+                    icon: Iconsax.card_pos),
+                serviceListWidget(context,
                     link: '/event_management',
                     img: 'assets/services/handshake.png',
                     name: 'NIGERIAN CONTENT ACT',
-                    icon: Iconsax.document
-                ),
-                serviceListWidget(
-                    context,
+                    icon: Iconsax.document),
+                serviceListWidget(context,
                     link: '/event_management',
                     img: 'assets/services/cv.png',
                     name: 'OPERATIONAL GUIDELINES',
-                    icon: Iconsax.clipboard_text
-                ),
-
+                    icon: Iconsax.clipboard_text),
               ],
             ),
           ),
-        )
-    );
+        ));
   }
+
   void _handleMenuButtonPressed() {
     // NOTICE: Manage Advanced Drawer state through the Controller.
     // _advancedDrawerController.value = AdvancedDrawerValue.visible();
     _advancedDrawerController.showDrawer();
   }
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
+}
+
+class Slides {
+  String title;
+  String url;
+  Slides(this.title, this.url);
 }
