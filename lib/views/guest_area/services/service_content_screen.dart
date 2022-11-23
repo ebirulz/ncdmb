@@ -93,14 +93,6 @@ class _NewsHeadline extends StatelessWidget {
               height: 1.25,
             ),
           ),
-          const SizedBox(height: 10),
-          Text(
-            service.body,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(color: Colors.white),
-          ),
         ],
       ),
     );

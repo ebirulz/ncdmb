@@ -24,43 +24,23 @@ class _StaffServicesCategoryScreenState extends State<StaffServicesCategoryScree
 
   @override
   Widget build(BuildContext context) {
-    if (DeviceUtil.isTablet) {
-      noOfGrid = 5;
-    }
-    FetchPixels(context);
-    double setVal = FetchPixels.getDefaultHorSpace(context);
-    return WillPopScope(
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: backGroundColor,
-          body: SafeArea(
-            child: Column(
-              children: [
-                getVerSpace(FetchPixels.getPixelHeight(20)),
-                getPaddingWidget(
-                    EdgeInsets.symmetric(horizontal: setVal),
-                    gettoolbarMenu(context, "back.svg", () {
-                      Constant.backToPrev(context);
-                    },
-                        istext: true,
-                        title: "Staff Services",
-                        fontsize: 24,
-                        weight: FontWeight.w900,
-                        textColor: Colors.black)),
-                getVerSpace(FetchPixels.getPixelHeight(32)),
-                Expanded(child: categoryView())
-              ],
-            ),
-          ),
-        ),
-        onWillPop: () async {
-          Constant.backToPrev(context);
-          return false;
-        });
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
+      body: ListView(padding: EdgeInsets.zero, children: [
+        const _ImageHeader(),
+        getVerSpace(FetchPixels.getPixelHeight(20)),
+        categoryView()
+      ]),
+    );
   }
 
   categoryView() {
     return Container(
+      height: 500,
       child: GridView.builder(
         itemCount: staffServicesLists.length,
         padding:
@@ -103,6 +83,24 @@ class _StaffServicesCategoryScreenState extends State<StaffServicesCategoryScree
           );
         },
       ),
+    );
+  }
+}
+
+class _ImageHeader extends StatelessWidget {
+  const _ImageHeader({
+    Key? key,
+  }) : super(key: key);
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ImageContainerLocal(
+      height: MediaQuery.of(context).size.height * 0.35,
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      imageUrl: 'assets/images/staff_services.png',
     );
   }
 }

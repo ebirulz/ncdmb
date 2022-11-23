@@ -1,9 +1,8 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ncdmb/utils/color_data.dart';
 import 'package:ncdmb/views/guest_area/home/utils/event_list.dart';
+import 'package:ncdmb/views/guest_area/home/utils/news_carousel.dart';
 import 'package:ncdmb/views/guest_area/home/utils/services_widget.dart';
 import 'package:ncdmb/views/guest_area/others/strategic_roadmap_screen.dart';
 import 'package:ncdmb/views/notification/notification_screen.dart';
@@ -29,13 +28,6 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
 
   final _advancedDrawerController = AdvancedDrawerController();
 
-  List<Slides> slides = [
-    Slides('Slide 1', s1, 'assets/images/slide1.png'),
-    Slides('Slide 2', s2, 'assets/images/slide2.png'),
-    Slides('Slide 3', s3, 'assets/images/slide3.png'),
-  ];
-  int _current = 0;
-  String slideText = '';
   @override
   void initState() {
     super.initState();
@@ -191,9 +183,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                     ],
                   ),
                 ),
-                getVerSpace(FetchPixels.getPixelHeight(10)),
                 Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
+                  padding: const EdgeInsets.only(left: 10, bottom: 10),
                   child: Text(
                     "Categories",
                     style: Theme.of(context).textTheme.subtitle1,
@@ -201,63 +192,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 ),
                 const Categories(),
                 getVerSpace(FetchPixels.getPixelHeight(20)),
-                CarouselSlider(
-                  items: slides
-                      .map((e) => Column(
-                    children: [
-                      Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                  e.url,
-                                ),
-                                fit: BoxFit.cover)),
-                      ),
-                    ],
-                  ))
-                      .toList(),
-                  options: CarouselOptions(
-                      viewportFraction: 1,
-                      height: 200,
-                      autoPlay: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _current = index;
-                          slideText = slides[index].description;
-                        });
-                      }),
-                ),
-                Text(slideText),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(slides, (index, url) {
-                    return Column(
-                      children: [
-                        Container(
-                          width: _current == index ? 40 : 20,
-                          height: 10,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 2),
-                          decoration: BoxDecoration(
-                              borderRadius: _current == index
-                                  ? const BorderRadius.all(Radius.circular(30))
-                                  : null,
-                              shape: _current == index
-                                  ? BoxShape.rectangle
-                                  : BoxShape.circle,
-                              color: _current == index
-                                  ? Colors.green
-                                  : Colors.brown.withOpacity(.5)),
-                        ),
-                        const VerticalDivider(
-                          width: 20,
-                        )
-                      ],
-                    );
-                  }),
-                ),
-                getVerSpace(FetchPixels.getPixelHeight(40)),
+                NewsCarouselSlider(),
                 Container(
                     padding: const EdgeInsets.all(10),
                     height: 150,
@@ -311,14 +246,14 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 ),
                 serviceListWidget(
                     context,
-                    link: '/event_management',
+                    link: '/ncdf_payment',
                     img: 'assets/services/payment-method.png',
                     name: 'NCDF PAYMENT PORTAL',
                     icon: Iconsax.card_pos
                 ),
                 serviceListWidget(
                     context,
-                    link: '/event_management',
+                    link: '/ngn_content_act',
                     img: 'assets/services/handshake.png',
                     name: 'NIGERIAN CONTENT ACT',
                     icon: Iconsax.document
@@ -343,25 +278,3 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
     _advancedDrawerController.showDrawer();
   }
 }
-
-List<T> map<T>(List list, Function handler) {
-  List<T> result = [];
-  for (var i = 0; i < list.length; i++) {
-    result.add(handler(i, list[i]));
-  }
-  return result;
-}
-
-class Slides {
-  String title;
-  String description;
-  String url;
-  Slides(this.title, this.description, this.url);
-}
-
-const s1 =
-    "We promise that your money will be completely protected. We work together with Flutterwave to make sure that we abide by all legal and regulatory standards.";
-const s2 =
-    "Do not become alarmed if your PennyTree account has been temporarily disabled. We have detected an odd behavior on your account, which is what this indicates. For the following twelve (12) hours, you wouldn't be able to access your account. Contact us by sending an email to support@mypennytree.com";
-const s3 =
-    "To contact PennyTree, please call 09030266439 or email support@mypennytree.com. You can also reach out to us on any of our social media accounts.\nWe also run on intercom to provide immediate response to your questions and feedback. Please chat with us directly from your dashboard by clicking on the chat icon on your screen. ";

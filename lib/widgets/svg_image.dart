@@ -202,7 +202,6 @@ class ImageContainerLocal extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
           image: AssetImage(imageUrl),
           fit: BoxFit.cover,

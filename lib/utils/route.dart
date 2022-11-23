@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:ncdmb/views/guest_area/events/all_events.dart';
 import 'package:ncdmb/views/guest_area/others/marine_vassel_report.dart';
+import 'package:ncdmb/views/guest_area/others/ncdf_payment_screen.dart';
 import 'package:ncdmb/views/guest_area/others/ncdmb_overview/article_content_screen.dart';
 import 'package:ncdmb/views/guest_area/others/ncdmb_overview/ncdmb_overview_screen.dart';
+import 'package:ncdmb/views/guest_area/others/ngn_content_act_screen.dart';
 import 'package:ncdmb/views/guest_area/others/nogicjqs.dart';
 import 'package:ncdmb/views/guest_area/others/videos_screen.dart';
 import 'package:ncdmb/views/guest_area/services/service_content_screen.dart';
@@ -44,7 +46,8 @@ var customRoutes = <String, WidgetBuilder>{
 
   '/marine_vessel': (context) => const MarineVesselReport(),
   '/nogicjqs': (context) => const NOGICJQSScreen(),
-
+  '/ncdf_payment': (context) => const NCDFPaymentPortalScreen(),
+  '/ngn_content_act': (context) => const NGNContentActScreen(),
 
 
 

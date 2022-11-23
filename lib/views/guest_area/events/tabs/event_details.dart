@@ -21,6 +21,12 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
     double defSpace = FetchPixels.getDefaultHorSpace(context);
     EdgeInsets edgeInsets = EdgeInsets.symmetric(horizontal: defSpace);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add), //child widget inside this button
+        onPressed: (){
+          //task to execute when this button is pressed
+        },
+      ),
       resizeToAvoidBottomInset: false,
       backgroundColor: backGroundColor,
       body: SafeArea(
@@ -55,7 +61,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         getPaddingWidget(edgeInsets, eventDescription(context)),
         getVerSpace(FetchPixels.getPixelHeight(29)),
         Padding(
-            padding: EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20),
           child: getCustomFont("Guest Speakers", 24, defaultGreen, 2,
               fontWeight: FontWeight.w900),
         ),
@@ -67,9 +73,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
             height: 70,
             decoration: BoxDecoration(
                 color: const Color(0xff235A45).withOpacity(0.1),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: <Widget>[
                   Container(
