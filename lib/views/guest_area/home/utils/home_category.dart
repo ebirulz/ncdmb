@@ -18,10 +18,10 @@ class CategoryModel {
 
 List<CategoryModel> demoCategories = [
   CategoryModel(name: "All Categories"),
-  CategoryModel(name: "About NCDMB", svgSrc: "assets/icons/Sale.svg", route: '/ncdmb_overview_screen'),
-  CategoryModel(name: "Videos", svgSrc: "assets/icons/Man.svg", route: '/videos'),
-  CategoryModel(name: "Services", svgSrc: "assets/icons/Woman.svg", route: '/ncdmb_services'),
-  CategoryModel(name: "NOGIC JQS", svgSrc: "assets/icons/Child.svg", route: '/'),
+  CategoryModel(name: "About NCDMB", svgSrc: "assets/icons/Bookmark.svg", route: '/ncdmb_overview_screen'),
+  CategoryModel(name: "Videos", svgSrc: "assets/icons/Image.svg", route: '/videos'),
+  CategoryModel(name: "Services", svgSrc: "assets/icons/Preferencesz.svg", route: '/ncdmb_services'),
+  CategoryModel(name: "NOGIC JQS", svgSrc: "assets/icons/Category.svg", route: '/nogicjqs'),
 ];
 // End For Preview
 

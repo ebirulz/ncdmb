@@ -66,11 +66,11 @@ GestureDetector buildEventListItem(
                       ),
                       getVerSpace(FetchPixels.getPixelHeight(12)),
                       getCustomFont(
-                        'Upcoming Date ${date!}',
+                        'Date ${date!}',
                         14,
                         Colors.green,
                         1,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.bold,
                       ),
                       getVerSpace(FetchPixels.getPixelHeight(12)),
                     ],

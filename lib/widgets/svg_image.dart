@@ -135,6 +135,14 @@ DecorationImage getDecorationAssetImage(BuildContext buildContext, String image,
       scale: FetchPixels.getScale());
 }
 
+DecorationImage getDecorationUrlImage(BuildContext buildContext, String image,
+    {BoxFit fit = BoxFit.contain}) {
+  return DecorationImage(
+      image: NetworkImage(image),
+      fit: fit,
+      scale: FetchPixels.getScale());
+}
+
 class ImageContainer extends StatelessWidget {
   const ImageContainer({
     Key? key,

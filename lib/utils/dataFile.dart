@@ -8,7 +8,7 @@ import '../views/guest_area/staff_services/utils/model.dart';
 class DataFile {
 
   static List<ModelPopularEvents> popularEventList = [
-    ModelPopularEvents("event1.png", "Stakeholder Summit 2022", "12-Nov-2022"),
+    ModelPopularEvents("pnc-half-logo.png", "The 11th Practical Nigerian Content (PNC) Forum", "5-8th Dec.2022"),
     ModelPopularEvents("event2.png", "The Largest Energy Exhibition in West Africa", "12-Nov-2022"),
   ];
 

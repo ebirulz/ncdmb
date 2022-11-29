@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../../../utils/color_data.dart';
 import '../../../../utils/constant.dart';
@@ -7,14 +8,14 @@ import '../../../../utils/spacing.dart';
 import '../../../../widgets/svg_image.dart';
 import '../../../../widgets/widget_utils.dart';
 
-class ManagementScreen extends StatefulWidget {
-  const ManagementScreen({Key? key}) : super(key: key);
+class GuestSpeakers extends StatefulWidget {
+  const GuestSpeakers({Key? key}) : super(key: key);
 
   @override
-  State<ManagementScreen> createState() => _ManagementScreenState();
+  State<GuestSpeakers> createState() => _GuestSpeakersState();
 }
 
-class _ManagementScreenState extends State<ManagementScreen> {
+class _GuestSpeakersState extends State<GuestSpeakers> {
   @override
   Widget build(BuildContext context) {
     FetchPixels(context);
@@ -41,7 +42,7 @@ class _ManagementScreenState extends State<ManagementScreen> {
             gettoolbarMenu(context, "back.svg", () {
               Constant.backToPrev(context);
             },
-                title: "Management",
+                title: "Guest Speakers",
                 weight: FontWeight.w900,
                 textColor: Colors.black,
                 fontsize: 24,
@@ -72,70 +73,70 @@ class _ManagementScreenState extends State<ManagementScreen> {
       children: [
         getVerSpace(FetchPixels.getPixelHeight(24)),
         userListItem(
-            context,
-          title: 'Engr. Simbi Wabote (FNSE)',
-          position: 'Executive Secretary',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/05/ES-portrait.jpg',
+          context,
+          title: 'H.E. Udom Gabriel Emmanuel',
+          position: 'Governor Akwa Ibom',
+          imgUrl: 'https://www.pncnigeria.com/media/bagmhkmh/his-excellency-mr-udom-emmanuel-governor-akwa-ibom-state.jpg',
         ),
         userListItem(
           context,
-          title: 'Mr. Patrick Daziba Obah',
-          position: 'Director, Planning Research And Statistics (PRS)',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/02/Patrick.jpg',
+          title: 'H.E. Hon. Timipre Sylva',
+          position: 'Minister of State for Petroleum Resources Federal Republic of Nigeria',
+          imgUrl: 'https://www.pncnigeria.com/media/cehh4itd/sylva.jpg',
         ),
         userListItem(
           context,
-          title: 'Mr. Akintunde Adelana',
-          position: 'Director, Monitoring And Evaluation',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/05/AkintundeAdelana-1-1.png',
+          title: 'Ambassador Gabriel Aduda',
+          position: 'Permanent Secretary Ministry of Petroleum Resources',
+          imgUrl: 'https://www.pncnigeria.com/media/jj2dzchc/ambassador-gbariel-aduda.jpg',
         ),
         userListItem(
           context,
-          title: 'Mr. Isaac Yalah',
-          position: 'Director, Finance And Personnel Management',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/02/isaac.jpg',
+          title: 'Engr. Simbi Wabote',
+          position: 'Executive Secretary (NCDMB)',
+          imgUrl: 'https://www.pncnigeria.com/media/aptaa21r/eng-simbi-wambote.jpg?anchor=center&mode=crop&width=359&height=359&rnd=132779968924070000',
         ),
         userListItem(
           context,
-          title: 'Barr. Umar M. Babangida',
-          position: 'Director, Legal Services',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/02/Umar-2.jpg',
+          title: 'Osagie Okunbor',
+          position: 'Managing Director, & Country Chair Shell Petroleum Development Company of Nigeria Limited, & Shell Companies in Nigeria',
+          imgUrl: 'https://www.pncnigeria.com/media/s1xf1s2w/9.png?anchor=center&mode=crop&width=359&height=359&rnd=132604456105470000',
         ),
         userListItem(
           context,
-          title: 'Dr. Ginah O. Ginah',
-          position: 'General Manager, Zonal Coordination And Corporate Communications',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/02/Ginah.jpg',
+          title: 'Olalekan Ogunleye',
+          position: 'Deputy Managing Director Nigeria LNG',
+          imgUrl: 'https://www.pncnigeria.com/media/carj3kpc/olalekan-ogunleye-picture.jpg?anchor=center&mode=crop&width=359&height=359&rnd=133128918541170000',
         ),
         userListItem(
           context,
-          title: 'Mr. Akintunde Adelana',
-          position: 'Director, Monitoring And Evaluation',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/05/AkintundeAdelana-1-1.png',
+          title: 'Richard Laing',
+          position: 'Chairman & Managing Director ExxonMobil Companies in Nigeria',
+          imgUrl: 'https://www.pncnigeria.com/media/44ankfr1/richard-laing.png?anchor=center&mode=crop&width=359&height=359&rnd=132804488432070000',
         ),
         userListItem(
           context,
-          title: 'Engr. Paul Zuhumben',
-          position: 'General Manager, Project Certifications And Authorization',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/02/Paul.jpg?',
+          title: 'Patrick Obah',
+          position: 'Director - Planning, Research & Statistics (NCDMB)',
+          imgUrl: 'https://www.pncnigeria.com/media/b5yjpvkd/patrick_obah-removebg-preview-2.png?anchor=center&mode=crop&width=359&height=359&rnd=132780890281770000',
         ),
         userListItem(
           context,
-          title: 'Mr. Abdulmalik Halilu',
-          position: 'General Manager, Research And Statistics',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2021/09/HaliliuA.jpg?w=1200&ssl=1',
-        ),
-        userListItem(
-          context,
-          title: 'Mr. Akintunde Adelana',
-          position: 'Director, Monitoring And Evaluation',
-          imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/05/AkintundeAdelana-1-1.png',
+          title: 'Isaac Yalah',
+          position: 'Director – Finance & Personnel Management NCDMB',
+          imgUrl: 'https://www.pncnigeria.com/media/bmcn3olc/isaac-yalah.jpg?anchor=center&mode=crop&width=359&height=359&rnd=132780785972700000',
         ),
         userListItem(
           context,
           title: 'Mr. Akintunde Adelana',
           position: 'Director, Monitoring And Evaluation',
           imgUrl: 'https://i0.wp.com/ncdmb.gov.ng/wp-content/uploads/2020/05/AkintundeAdelana-1-1.png',
+        ),
+        userListItem(
+          context,
+          title: 'Eberechukwu Oji',
+          position: 'Managing Director & Chief Executive Officer ND Western',
+          imgUrl: 'https://www.pncnigeria.com/media/otdfpfz2/eberechukwu-oji.jpg?anchor=center&mode=crop&width=359&height=359&rnd=132825752495730000',
         ),
 
       ],

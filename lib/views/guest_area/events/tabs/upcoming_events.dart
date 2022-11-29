@@ -16,11 +16,11 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
       children: [
         buildEventListItem(
           context,
-          img: 'event1.png',
+          img: 'pnc-half-logo.png',
           function: proceed,
-          date: '12-Nov-2022',
-          desc: 'Testing Description Testing Description Testing Description',
-          eventName: 'NCDMB To Host Africa Local Content Investment Forum'
+          date: '5-8 December 2022',
+          desc: 'The 11th Practical Nigerian Content (PNC) Forum will take place in-person safely and securely between on 5-8 December 2022 in Uyo, Akwa Ibom. ',
+          eventName: 'The 11th Practical Nigerian Content (PNC) Forum'
         )
       ],
     );

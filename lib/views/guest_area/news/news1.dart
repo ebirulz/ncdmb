@@ -60,7 +60,7 @@ class _NewsOneState extends State<NewsOne> {
         tag: 'event image',
         child: getCircularImage(context, FetchPixels.getPixelWidth(374),
             FetchPixels.getPixelHeight(225), FetchPixels.getPixelHeight(16),
-            'services/cb.png',boxFit: BoxFit.cover));
+            'slide1.jpg',boxFit: BoxFit.cover));
   }
 
   Column eventDescription(BuildContext context) {

@@ -23,7 +23,7 @@ Widget executiveSec(BuildContext context){
           SizedBox(
             height: 135,
             width: 135,
-            child: getAssetImage("es.png", FetchPixels.getPixelHeight(100),  FetchPixels.getPixelWidth(100)),
+            child: getAssetImage("media/Simbi-Wabote.fw.png", FetchPixels.getPixelHeight(100),  FetchPixels.getPixelWidth(100)),
           ),
           const SizedBox(
             width: 20,

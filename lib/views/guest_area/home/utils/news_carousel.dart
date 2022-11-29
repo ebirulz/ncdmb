@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel_slider/flutter_custom_carousel_slider.dart';
 import 'package:ncdmb/views/guest_area/news/news1.dart';
+import 'package:ncdmb/views/guest_area/news/news2.dart';
+import 'package:ncdmb/views/guest_area/news/news4.dart';
+
+import '../../news/news3.dart';
 
 class NewsCarouselSlider extends StatefulWidget {
   const NewsCarouselSlider({Key? key}) : super(key: key);
@@ -46,7 +50,7 @@ class _NewsCarouselSliderState extends State<NewsCarouselSlider> {
       onImageTap: (i) {},
     ),
     CarouselItem(
-      image: const ExactAssetImage('assets/images/slide4.jpg'),
+      image: const ExactAssetImage('assets/images/simbi.jpg'),
       title: 'African Content: Wabote Seeks Collaboration In Projects, Capacitydevelopment, R&D',
       titleTextStyle: const TextStyle(
         fontSize: 14,
@@ -61,7 +65,57 @@ class _NewsCarouselSliderState extends State<NewsCarouselSlider> {
     return Column(
       children: [
         CustomCarouselSlider(
-          items: itemList,
+          items: itemList = [
+            CarouselItem(
+              image: const AssetImage(
+                'assets/images/slide1.jpg',
+              ),
+              title:
+              'Wabote Commissions GIL Automation’s Factory, Charges Oil Firms On Diversification, Energy Transition',
+              titleTextStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+              ),
+              onImageTap: (i) {
+                newsOne();
+              },
+            ),
+            CarouselItem(
+              image: const AssetImage(
+                'assets/images/slide2.jpg',
+              ),
+              title: 'NCDMB Hosts R&D Roundtable, Gets Huge Backing From Industry Operators',
+              titleTextStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+              ),
+              onImageTap: (i) {
+                newsTwo();
+              },
+            ),
+            CarouselItem(
+              image: const ExactAssetImage('assets/images/slide3.jpg'),
+              title: 'Wabote, Jonathan, 42 Others Bag National Excellence Awards In Public Service',
+              titleTextStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+              ),
+              onImageTap: (i) {
+                newsThree();
+              },
+            ),
+            CarouselItem(
+              image: const ExactAssetImage('assets/images/simbi.jpg'),
+              title: 'African Content: Wabote Seeks Collaboration In Projects, Capacitydevelopment, R&D',
+              titleTextStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+              ),
+              onImageTap: (i) {
+                newsFour();
+              },
+            ),
+          ],
           height: 250,
           subHeight: 50,
           width: (MediaQuery
@@ -77,4 +131,13 @@ class _NewsCarouselSliderState extends State<NewsCarouselSlider> {
 newsOne(){
   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewsOne()));
 }
+  newsTwo(){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewsTwo()));
+  }
+  newsThree(){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewsThree()));
+  }
+  newsFour(){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewsFour()));
+  }
 }

@@ -93,14 +93,14 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                   leading: const Icon(Iconsax.people),
                   title: const Text('Staff Services'),
                 ),
-                ListTile(
+                /*ListTile(
                   visualDensity: const VisualDensity(vertical: -4),
                   onTap: () {
 
                   },
                   leading: const Icon(Iconsax.video_vertical),
                   title: const Text('Media'),
-                ),
+                ),*/
                 ListTile(
                   visualDensity: const VisualDensity(vertical: -4),
                   onTap: () {
@@ -124,7 +124,9 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                   title: const Text('Servicom'),
                 ),*/
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/contact');
+                  },
                   //dense: true,
                   visualDensity: const VisualDensity(vertical: -4),
                   leading: const Icon(Iconsax.message),
@@ -206,9 +208,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                         children: [
                           InkWell(
                             onTap: (){
-                              Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => const StrategicRoadMap())
-                              );
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const StrategicRoadMap()));
                             },
                             child: getAssetImage("roadmap.png", FetchPixels.getPixelHeight(200),  FetchPixels.getPixelWidth(150)),
                             //child: Image.asset('assets/images/roadmap.png'),
@@ -230,13 +230,6 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 getVerSpace(FetchPixels.getPixelHeight(20)),
                 EventList(),
                 getVerSpace(FetchPixels.getPixelHeight(20)),
-                /*serviceListWidget(
-                    context,
-                    link: '/event_management',
-                    img: 'assets/services/calendar.png',
-                    name: 'EVENTS MANAGEMENT SYSTEM',
-                  icon: Iconsax.calendar_tick
-                ),*/
                 serviceListWidget(
                     context,
                     link: '/marine_vessel',

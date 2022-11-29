@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ncdmb/models/events_model.dart';
+import 'package:ncdmb/views/guest_area/events/tabs/event_details.dart';
 
 import '../../../../utils/dataFile.dart';
 import '../../../../utils/fetch_pixels.dart';
@@ -53,8 +54,7 @@ class EventList extends StatelessWidget {
               popularEventsLists[index];
               return GestureDetector(
                 onTap: () {
-                  //PrefData.setDefIndex(index);
-                  //Constant.sendToNext(context, Routes.detailRoute);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const EventDetailsScreen()));
                 },
                 child: Container(
                   width: FetchPixels.getPixelWidth(177),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ncdmb/views/guest_area/events/event_details/event_brochure_screen.dart';
+import 'package:ncdmb/views/guest_area/events/event_details/gov_support.dart';
+import 'package:ncdmb/views/guest_area/events/event_details/speakers_screen.dart';
+import 'package:ncdmb/views/guest_area/events/event_details/sponsors.dart';
 
 import '../../../../utils/color_data.dart';
 import '../../../../utils/constant.dart';
@@ -6,6 +10,7 @@ import '../../../../utils/fetch_pixels.dart';
 import '../../../../utils/spacing.dart';
 import '../../../../widgets/svg_image.dart';
 import '../../../../widgets/widget_utils.dart';
+import 'event_form.dart';
 
 class EventDetailsScreen extends StatefulWidget {
   const EventDetailsScreen({Key? key}) : super(key: key);
@@ -21,12 +26,15 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
     double defSpace = FetchPixels.getDefaultHorSpace(context);
     EdgeInsets edgeInsets = EdgeInsets.symmetric(horizontal: defSpace);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add), //child widget inside this button
+      /*floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: defaultGreen,
+        label: Text('Register'),
+        icon: Icon(Iconsax.message_edit),//child widget inside this button
         onPressed: (){
           //task to execute when this button is pressed
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EventFormScreen()));
         },
-      ),
+      ),*/
       resizeToAvoidBottomInset: false,
       backgroundColor: backGroundColor,
       body: SafeArea(
@@ -59,67 +67,75 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         getPaddingWidget(edgeInsets, eventImage()),
         getVerSpace(FetchPixels.getPixelHeight(20)),
         getPaddingWidget(edgeInsets, eventDescription(context)),
-        getVerSpace(FetchPixels.getPixelHeight(29)),
-        Padding(
-            padding: const EdgeInsets.only(left: 20),
-          child: getCustomFont("Guest Speakers", 24, defaultGreen, 2,
-              fontWeight: FontWeight.w900),
-        ),
         getVerSpace(FetchPixels.getPixelHeight(19)),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Container(
-            width: double.infinity,
-            height: 70,
-            decoration: BoxDecoration(
-                color: const Color(0xff235A45).withOpacity(0.1),
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: const BoxDecoration(
-                        color: Color(0xFFFFF4EE),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(17),
-                          topRight: Radius.circular(17),
-                          bottomRight: Radius.circular(17),
-                          bottomLeft: Radius.circular(7),
-                        )),
-                    child: const Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/es.png"),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text(
-                        "Engr. Simbi Wabote",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "Topic: Key roles of NCDMB",
-                        style: TextStyle(fontSize: 12),
-                      ),
-
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+        getButtonWithIcon(
+            context, Colors.white, "Guest Speakers", Colors.black, () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GuestSpeakers()));
+        }, 16,
+            weight: FontWeight.w900,
+            buttonHeight: FetchPixels.getPixelHeight(72),
+            borderRadius:
+            BorderRadius.circular(FetchPixels.getPixelHeight(12)),
+            boxShadow: [
+              const BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0.0, 4.0)),
+            ],
+            prefixIcon: false,
+            prefixImage: "headset.svg",
+            sufixIcon: true,
+            suffixImage: "arrow_right.svg"),
+        getVerSpace(FetchPixels.getPixelHeight(19)),
+        getButtonWithIcon(
+            context, Colors.white, "2022 Sponsors", Colors.black, () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Sponsors()));
+        }, 16,
+            weight: FontWeight.w900,
+            buttonHeight: FetchPixels.getPixelHeight(72),
+            borderRadius:
+            BorderRadius.circular(FetchPixels.getPixelHeight(12)),
+            boxShadow: [
+              const BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0.0, 4.0)),
+            ],
+            prefixIcon: false,
+            prefixImage: "card.svg",
+            sufixIcon: true,
+            suffixImage: "arrow_right.svg"),
+        getVerSpace(FetchPixels.getPixelHeight(19)),
+        getButtonWithIcon(
+            context, Colors.white, "Government Support", Colors.black, () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GovernmentSupport()));
+        }, 16,
+            weight: FontWeight.w900,
+            buttonHeight: FetchPixels.getPixelHeight(72),
+            borderRadius:
+            BorderRadius.circular(FetchPixels.getPixelHeight(12)),
+            boxShadow: [
+              const BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0.0, 4.0)),
+            ],
+            prefixIcon: false,
+            prefixImage: "headset.svg",
+            sufixIcon: true,
+            suffixImage: "arrow_right.svg"),
+        getVerSpace(FetchPixels.getPixelHeight(20)),
+        getPaddingWidget(
+          edgeInsets,
+          getButton(context, defaultGreen, "Register for event", Colors.white, () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EventFormScreen()));
+          }, 18,
+              weight: FontWeight.w600,
+              buttonHeight: FetchPixels.getPixelHeight(60),
+              borderRadius:
+              BorderRadius.circular(FetchPixels.getPixelHeight(15))),
         ),
+
         // packageList(context)
       ],
     );
@@ -143,7 +159,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         tag: 'event image',
         child: getCircularImage(context, FetchPixels.getPixelWidth(374),
             FetchPixels.getPixelHeight(225), FetchPixels.getPixelHeight(16),
-            'event2.png',boxFit: BoxFit.cover));
+            'pnc-half-logo.png',boxFit: BoxFit.cover));
     // getAssetImage(popularServiceLists[index].image ?? "",
     // FetchPixels.getPixelWidth(374), FetchPixels.getPixelHeight(225),
     // boxFit: BoxFit.fill),);
@@ -153,11 +169,11 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        getCustomFont("NCDMB To Host Africa Local Content Investment Forum", 24, defaultGreen, 2,
+        getCustomFont("The 11th Practical Nigerian Content (PNC) Forum", 24, defaultGreen, 2,
             fontWeight: FontWeight.w900),
         getVerSpace(FetchPixels.getPixelHeight(24)),
         getMultilineCustomFont(
-            "Speaking ahead of the event, the Executive Secretary NCDMB, Engr. Simbi Kesiye Wabote stated that the Africa Local Content Investment Forum would seek to elevate Africa’s indigenous oil producers and national oil companies as the next generation of project producers involved in equity financing of exploration and field development activities.",
+            "The 11th Practical Nigerian Content (PNC) Forum will take place in-person safely and securely between on 5-8 December 2022 in Uyo, Akwa Ibom. \n \n 11 years on from the enactment of the NOGICD Act, many strides have been made in developing domestic capacity that has spurred new business activity and retained wealth in the country.\n \n The Practical Nigerian Content Forum will welcome you back to celebrate 11 years of the Nigerian Content Achievements and to further devise strategies for business recovery and sustaining Nigerian Content in a post-pandemic environment, while businesses connect to foster economic growth. The official annual meeting will gather the most senior industry stakeholders to discuss new strategies and engage with government and industry players across the value chain.",
             15,
             defaultGreen,
             fontWeight: FontWeight.w400,
@@ -165,5 +181,4 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       ],
     );
   }
-
 }

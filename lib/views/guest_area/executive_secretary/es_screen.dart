@@ -69,7 +69,7 @@ class _ExecutiveSecretaryScreenState extends State<ExecutiveSecretaryScreen> {
         tag: 'es image',
         child: getCircularImage(context, FetchPixels.getPixelWidth(374),
             FetchPixels.getPixelHeight(225), FetchPixels.getPixelHeight(16),
-            'es.png',boxFit: BoxFit.cover));
+            'media/Simbi-Wabote.fw.png',boxFit: BoxFit.cover));
     // getAssetImage(popularServiceLists[index].image ?? "",
     // FetchPixels.getPixelWidth(374), FetchPixels.getPixelHeight(225),
     // boxFit: BoxFit.fill),);
